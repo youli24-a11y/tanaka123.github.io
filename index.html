@@ -5,63 +5,239 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>楽天で買える神戸牛おすすめ5選｜焼肉ギフトからカレーまで徹底比較</title>
 <style>
-  body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 16px; color: #333; line-height: 1.8; }
-  h1 { font-size: 22px; border-bottom: 3px solid #bf0000; padding-bottom: 8px; }
-  h2 { font-size: 18px; background: #fff3f3; border-left: 4px solid #bf0000; padding: 8px 12px; margin-top: 40px; }
-  .intro { background: #f9f9f9; border-radius: 8px; padding: 16px; margin: 20px 0; }
-  .product { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; }
-  .rank { display: inline-block; background: #bf0000; color: #fff; font-size: 13px; padding: 2px 10px; border-radius: 4px; margin-bottom: 8px; }
-  .rank.omake { background: #888; }
-  .btn { display: inline-block; background: #bf0000; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 4px; margin-top: 12px; font-size: 14px; }
-  .btn:hover { background: #a00000; }
-  footer { text-align: center; margin-top: 60px; font-size: 12px; color: #999; border-top: 1px solid #eee; padding-top: 20px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif; background: #fdf6f0; color: #3d2b1f; line-height: 1.8; }
+  .header { background: linear-gradient(135deg, #c0392b, #e67e22); color: white; padding: 48px 20px; text-align: center; }
+  .header h1 { font-size: 24px; line-height: 1.5; max-width: 700px; margin: 0 auto 10px; }
+  .header p { font-size: 14px; opacity: 0.9; }
+  .container { max-width: 780px; margin: 0 auto; padding: 24px 16px; }
+  .intro { background: #fff8f3; border-left: 4px solid #e67e22; border-radius: 8px; padding: 20px 24px; margin: 24px 0; font-size: 15px; }
+  .intro p { margin-bottom: 12px; }
+  .intro p:last-child { margin-bottom: 0; }
+  .toc { background: white; border-radius: 12px; padding: 20px 24px; margin: 24px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .toc-title { font-size: 15px; font-weight: bold; color: #c0392b; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #f0d9cc; }
+  .toc ol { padding-left: 20px; font-size: 14px; line-height: 2.4; }
+  .toc a { color: #c0392b; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .section-label { font-size: 20px; font-weight: bold; color: #c0392b; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e67e22; }
+  .product { background: white; border-radius: 16px; padding: 28px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .rank-badge { display: inline-block; padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: bold; color: white; margin-bottom: 14px; }
+  .rank-1 { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+  .rank-2 { background: linear-gradient(135deg, #d35400, #e67e22); }
+  .rank-3 { background: linear-gradient(135deg, #7d6608, #b7950b); }
+  .rank-4 { background: linear-gradient(135deg, #1a5276, #2980b9); }
+  .rank-omake { background: #888; }
+  .product h2 { font-size: 18px; color: #3d2b1f; margin-bottom: 16px; line-height: 1.5; border-left: 4px solid #e67e22; padding-left: 12px; }
+  .product-desc { font-size: 14px; color: #5a3e35; margin-bottom: 20px; line-height: 1.9; }
+  .product-desc p { margin-bottom: 10px; }
+  .points { background: #fff8f3; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
+  .points-title { font-size: 13px; font-weight: bold; color: #c0392b; margin-bottom: 10px; }
+  .point-item { font-size: 13px; color: #5a3e35; padding: 4px 0; display: flex; align-items: flex-start; gap: 8px; }
+  .point-item::before { content: "✅"; flex-shrink: 0; }
+  .affiliate-link { margin: 16px 0; overflow-x: auto; }
+  .who-for { background: #f0f8ff; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; color: #1a5276; }
+  .who-for strong { display: block; margin-bottom: 6px; color: #1a5276; }
+  .summary-box { background: #fff3cd; border-radius: 12px; padding: 24px; margin: 40px 0; border: 1px solid #ffc107; }
+  .summary-box h2 { font-size: 17px; color: #856404; margin-bottom: 16px; }
+  .summary-row { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid #ffe69c; font-size: 14px; }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-rank { font-weight: bold; color: #c0392b; min-width: 50px; flex-shrink: 0; }
+  .summary-text { color: #5a3e35; }
+  footer { text-align: center; margin-top: 60px; padding: 32px 16px; background: #3d2b1f; color: #c8a882; font-size: 12px; line-height: 2.2; }
+  @media (max-width: 600px) {
+    .header h1 { font-size: 18px; }
+    .product { padding: 20px 16px; }
+    .product h2 { font-size: 15px; }
+  }
 </style>
 </head>
 <body>
 
-<h1>楽天で買える神戸牛おすすめ5選｜焼肉ギフトからカレーまで徹底比較</h1>
-
-<div class="intro">
-<p>誕生日・お中元・お歳暮……大切な人へのギフト選びに毎回悩んでいませんか？そんなときに絶対に外さないのが「神戸牛」です。日本三大和牛のひとつとして知られる神戸牛は、贈った瞬間に特別感が伝わる、最高のギフト食材。今回は楽天市場で実際に購入できる神戸牛商品を厳選して5つ紹介します。予算や用途に合わせて選べるよう、最高級ギフトからカジュアルに楽しめるレトルトまで幅広く取り上げました。贈る相手のことを思いながら、ぜひ最後まで読んでみてください。</p>
+<div class="header">
+  <h1>🥩 楽天で買える神戸牛おすすめ5選</h1>
+  <p>焼肉ギフトからカレーまで徹底比較｜2025年最新版</p>
 </div>
 
-<div class="product">
-  <span class="rank">第1位</span>
-  <h2>A5神戸牛食べくらべ焼肉セット ロース・モモ・カルビ 計480g</h2>
-  <p>大切な人への贈り物に迷ったら、これで間違いありません。A5ランクの神戸牛をロース・モモ・カルビの3部位で食べ比べられる贅沢なセット。桐箱入りで神戸牛証明書も付属するため、開けた瞬間から特別感が伝わります。誕生日・記念日・父の日など、ここぞという場面のギフトに。</p>
-  <a class="btn" href="https://hb.afl.rakuten.co.jp/ichiba/533430cd.90af73a9.533430ce.7d4c7a7a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwilmart%2Fmyn-1k5%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener">楽天で見る →</a>
-</div>
+<div class="container">
 
-<div class="product">
-  <span class="rank">第2位</span>
-  <h2>神戸牛6点食べ比べ焼肉 600g（楽天グルメ大賞受賞）</h2>
-  <p>楽天グルメ大賞受賞・2024年販売実績1万個突破という実績が、この商品の信頼性をすべて物語っています。迷ったらこれを選べば間違いない、神戸牛焼肉セットの定番中の定番です。6部位を食べ比べられる豪華な内容で、即日出荷対応なので急なギフトにも安心です。</p>
-  <a class="btn" href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Fkobebeef-tabekurabe-1%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener">楽天で見る →</a>
-</div>
+  <div class="intro">
+    <p>誕生日・お中元・お歳暮……大切な人へのギフト選びに毎回悩んでいませんか？そんなときに絶対に外さないのが「神戸牛」です。日本三大和牛のひとつとして知られる神戸牛は、贈った瞬間に特別感が伝わる、最高のギフト食材。今回は楽天市場で実際に購入できる神戸牛商品を厳選して5つ紹介します。</p>
+    <p>予算や用途に合わせて選べるよう、最高級ギフトからカジュアルに楽しめるレトルトまで幅広く取り上げました。「どれを選べばいいかわからない」という方でも迷わず選べるよう、各商品のおすすめポイントとこんな人向けという情報もあわせてまとめています。贈る相手のことを思いながら、ぜひ最後まで読んでみてください。</p>
+  </div>
 
-<div class="product">
-  <span class="rank">第3位</span>
-  <h2>ヒライの食べ比べ焼肉 400g〜600g</h2>
-  <p>肉のプロが厳選した部位だけを詰め合わせた、老舗肉店ヒライの焼肉セット。素材への妥協がない分、食べた瞬間の違いがわかります。希少部位も含まれており、本物の焼肉を自宅で楽しみたい方に自信を持っておすすめできる一品です。</p>
-  <a class="btn" href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Ftabekurabe-1%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener">楽天で見る →</a>
-</div>
+  <div class="toc">
+    <div class="toc-title">📋 目次</div>
+    <ol>
+      <li><a href="#item1">【第1位】A5神戸牛食べくらべ焼肉セット 480g（桐箱入り）</a></li>
+      <li><a href="#item2">【第2位】神戸牛6点食べ比べ焼肉 600g（楽天グルメ大賞）</a></li>
+      <li><a href="#item3">【第3位】ヒライの食べ比べ焼肉 400g〜600g</a></li>
+      <li><a href="#item4">【第4位】国産牛焼肉セット 上 約500g〜1kg</a></li>
+      <li><a href="#item5">【おまけ】神戸牛ビーフカレー3袋セット</a></li>
+      <li><a href="#summary">まとめ：どれを選べばいい？</a></li>
+    </ol>
+  </div>
 
-<div class="product">
-  <span class="rank">第4位</span>
-  <h2>国産牛焼肉セット 約1kg（5〜6人前）</h2>
-  <p>家族みんなで囲む焼肉パーティーに。カルビ・バラ・ロースの盛り合わせ約1kgは、5〜6人前とたっぷりボリューム。北海道産の国産牛を使った無添加仕立てで、安心して食べられます。大人数のBBQや家族の集まりにぴったりのコスパ重視セットです。</p>
-  <a class="btn" href="https://hb.afl.rakuten.co.jp/ichiba/53342fc5.b4adb31e.53342fc6.046f78b1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fonikunokamisama%2F14700-14-1000-01-n0140%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener">楽天で見る →</a>
-</div>
+  <p class="section-label">🏆 神戸牛おすすめランキング</p>
 
-<div class="product">
-  <span class="rank omake">おまけ</span>
-  <h2>神戸牛ビーフカレー3袋セット</h2>
-  <p>神戸牛の旨みをもっと手軽に楽しみたいなら、レトルトカレーという選択肢もあります。温めてかけるだけで、本格的な神戸牛の味が自宅で再現できる嬉しい一品。忙しい日の夕食やちょっとしたご褒美に、ぜひ試してみてください。</p>
-  <a class="btn" href="https://hb.afl.rakuten.co.jp/ichiba/533438ab.4084eb5b.533438ac.718351e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fawajitamanegi%2F10000583%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener">楽天で見る →</a>
+  <!-- 商品1 -->
+  <div class="product" id="item1">
+    <span class="rank-badge rank-1">👑 第1位</span>
+    <h2>A5神戸牛食べくらべ焼肉セット ロース・モモ・カルビ 計480g</h2>
+    <div class="affiliate-link">
+      <table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/533430cd.90af73a9.533430ce.7d4c7a7a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwilmart%2Fmyn-1k5%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/533430cd.90af73a9.533430ce.7d4c7a7a/?me_id=1220400&item_id=10030072&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fwilmart%2Fcabinet%2Fpicture01%2Fpicture02%2Fpicture18%2Fmyn-1k5-01.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="" title=""></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/533430cd.90af73a9.533430ce.7d4c7a7a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwilmart%2Fmyn-1k5%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">【 A5 神戸牛 食べくらべ焼肉セット ロース モモ カルビ 計480g 】送料無料 約3〜4人用 ブランド黒毛和牛 国産 牛肉 お祝い 贈答品 贈答用 誕生日 霜降り 神戸牛証明書付き 贅沢 豪華 鉄板焼き 但馬牛 冷凍配送 送料込み A5ランク 高級肉 桐箱入り 熨斗 のし対応 ギフト</a></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/533430cd.90af73a9.533430ce.7d4c7a7a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwilmart%2Fmyn-1k5%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/533430cd.90af73a9.533430ce.7d4c7a7a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwilmart%2Fmyn-1k5%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+    <div class="product-desc">
+      <p>神戸牛の中でも最高ランクとされるA5等級の焼肉セットです。ロース・モモ・カルビの3部位をひとつのセットで食べ比べられるのが最大の魅力で、部位ごとに異なる食感と旨みの違いを存分に楽しめます。</p>
+      <p>桐箱入りで神戸牛証明書も付属しているため、開封した瞬間から特別感が伝わります。熨斗・のし対応もしており、誕生日・結婚記念日・還暦祝い・父の日など「絶対に失敗したくない」贈り物の場面に最適です。</p>
+      <p>神戸牛はその希少性から流通量が非常に少なく、スーパーで購入できることはほとんどありません。楽天市場でこのクオリティのものが手軽に注文できるのは大きなメリットです。</p>
+    </div>
+    <div class="points">
+      <div class="points-title">おすすめポイント</div>
+      <div class="point-item">最高級A5ランクの神戸牛を使用</div>
+      <div class="point-item">桐箱入りで見た目から特別感が伝わる</div>
+      <div class="point-item">神戸牛証明書付きで品質が保証されている</div>
+      <div class="point-item">のし・熨斗対応でそのままギフトに使える</div>
+      <div class="point-item">送料無料・冷凍配送で新鮮なまま届く</div>
+    </div>
+    <div class="who-for">
+      <strong>🎯 こんな人におすすめ</strong>
+      予算を気にせず最高のものを贈りたい方・還暦や結婚記念日など特別な節目のギフトをお探しの方
+    </div>
+  </div>
+
+  <!-- 商品2 -->
+  <div class="product" id="item2">
+    <span class="rank-badge rank-2">🥈 第2位</span>
+    <h2>神戸牛6点食べ比べ焼肉 600g（楽天グルメ大賞受賞）</h2>
+    <div class="affiliate-link">
+      <table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Fkobebeef-tabekurabe-1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/53341c1d.1c397eee.53341c1e.8ff304ed/?me_id=1280592&item_id=10000103&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fauc-oniku-hirai%2Fcabinet%2F02996032%2Fhedda-%2F03402370%2Fimgrc0099460477.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="" title=""></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Fkobebeef-tabekurabe-1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">【楽天グルメ大賞受賞】2024年販売実績1万個突破！即日出荷対応 神戸牛6点食べ比べ焼肉 600g【送料無料】神戸ビーフ お取り寄せグルメ ギフト</a></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Fkobebeef-tabekurabe-1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Fkobebeef-tabekurabe-1%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+    <div class="product-desc">
+      <p>楽天グルメ大賞を受賞し、2024年の販売実績が1万個を突破したという数字が、この商品の人気と信頼性をすべて物語っています。「迷ったらこれ」と言い切れる、神戸牛焼肉セットの定番中の定番です。</p>
+      <p>6つの部位を一度に食べ比べられるのはこの商品最大の魅力。希少部位も含まれており、普段なかなか口にできない部位の味わいも楽しめます。また即日出荷対応なので、「明日までにギフトを準備しなければ」という急な場面でも安心して注文できます。</p>
+      <p>600gというボリュームは3〜4人でたっぷり楽しめる量。家族での特別な食事や、友人を招いてのホームパーティーにもぴったりです。</p>
+    </div>
+    <div class="points">
+      <div class="points-title">おすすめポイント</div>
+      <div class="point-item">楽天グルメ大賞受賞の信頼と実績</div>
+      <div class="point-item">2024年販売実績1万個突破の人気商品</div>
+      <div class="point-item">6部位600gで食べ比べが楽しめる</div>
+      <div class="point-item">即日出荷対応で急なギフトにも安心</div>
+      <div class="point-item">送料無料でお得に購入できる</div>
+    </div>
+    <div class="who-for">
+      <strong>🎯 こんな人におすすめ</strong>
+      失敗したくない方・実績重視で選びたい方・急なギフトが必要な方・神戸牛を初めてお取り寄せする方
+    </div>
+  </div>
+
+  <!-- 商品3 -->
+  <div class="product" id="item3">
+    <span class="rank-badge rank-3">🥉 第3位</span>
+    <h2>ヒライの食べ比べ焼肉 4点400g〜6点600g</h2>
+    <div class="affiliate-link">
+      <table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Ftabekurabe-1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/53341c1d.1c397eee.53341c1e.8ff304ed/?me_id=1280592&item_id=10000300&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fauc-oniku-hirai%2Fcabinet%2F07165198%2F10505729%2F600h6tenkoukouku.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="" title=""></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Ftabekurabe-1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">ヒライの食べ比べ焼肉（4点400g〜6点600g）送料無料 ギフト 誕生日 霜降り BBQ お歳暮</a></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Ftabekurabe-1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/53341c1d.1c397eee.53341c1e.8ff304ed/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-oniku-hirai%2Ftabekurabe-1%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+    <div class="product-desc">
+      <p>肉のプロが厳選した部位だけを詰め合わせた、老舗肉店ヒライのこだわり焼肉セットです。素材の品質に一切妥協しない姿勢が、食べた瞬間の味の違いに現れています。霜降りの美しさと、口に入れたときのとろけるような食感は一度食べたら忘れられません。</p>
+      <p>4点400gから6点600gまでサイズを選べるのも嬉しいポイント。少人数での贅沢な夕食にも、複数人でのホームパーティーにも対応できます。希少部位が含まれているため、普段なかなか食べられない部位の味わいも楽しめます。</p>
+      <p>ギフトとしてはもちろん、自分へのご褒美や家族との特別な記念日ディナーにもおすすめです。送料無料なので、コストパフォーマンスも優秀です。</p>
+    </div>
+    <div class="points">
+      <div class="points-title">おすすめポイント</div>
+      <div class="point-item">老舗肉店が厳選した本格派の焼肉セット</div>
+      <div class="point-item">希少部位を含む贅沢な内容</div>
+      <div class="point-item">4点〜6点でサイズを選べる柔軟さ</div>
+      <div class="point-item">霜降りの美しさと口どけの良さが格別</div>
+      <div class="point-item">送料無料でコスパも優秀</div>
+    </div>
+    <div class="who-for">
+      <strong>🎯 こんな人におすすめ</strong>
+      本物の肉質にこだわりたい方・少人数から大人数まで柔軟に対応したい方・自分へのご褒美にも使いたい方
+    </div>
+  </div>
+
+  <!-- 商品4 -->
+  <div class="product" id="item4">
+    <span class="rank-badge rank-4">4️⃣ 第4位</span>
+    <h2>国産牛焼肉セット 上 約500g〜1kg（5〜6人前）</h2>
+    <div class="affiliate-link">
+      <table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/53342fc5.b4adb31e.53342fc6.046f78b1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fonikunokamisama%2F99100-14-1000-01-n161%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/53342fc5.b4adb31e.53342fc6.046f78b1/?me_id=1377358&item_id=10000856&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fonikunokamisama%2Fcabinet%2Fshohin%2Franking%2Fn161_1000g_rank_1.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="" title=""></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/53342fc5.b4adb31e.53342fc6.046f78b1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fonikunokamisama%2F99100-14-1000-01-n161%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">北海道産 神様の焼肉セット【上】約500g〜1kg 国産牛 カルビ ロース バラ 食べ比べ BBQ 急速冷凍 無添加</a></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/53342fc5.b4adb31e.53342fc6.046f78b1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fonikunokamisama%2F99100-14-1000-01-n161%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/53342fc5.b4adb31e.53342fc6.046f78b1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fonikunokamisama%2F99100-14-1000-01-n161%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+    <div class="product-desc">
+      <p>家族や友人と大人数でわいわい楽しむ焼肉パーティーに最適な大ボリュームセットです。カルビ・ロース・バラの3部位が約500g〜1kgという圧倒的なボリュームで届きます。5〜6人前なので、家族全員でお腹いっぱい楽しめます。</p>
+      <p>北海道産の国産牛を使用しており、急速冷凍・無添加仕立てで素材本来の旨みをそのまま届けてくれます。添加物が気になる方や、子どもと一緒に食べる方にも安心して選べる商品です。</p>
+      <p>焼くだけで簡単に調理できるのも嬉しいポイント。特別な準備なしにリッチな焼肉体験が楽しめます。BBQや屋外イベントにもそのまま持っていける手軽さも魅力です。</p>
+    </div>
+    <div class="points">
+      <div class="points-title">おすすめポイント</div>
+      <div class="point-item">約1kgの大ボリュームで5〜6人前</div>
+      <div class="point-item">北海道産国産牛・無添加で安心</div>
+      <div class="point-item">急速冷凍で鮮度と旨みをキープ</div>
+      <div class="point-item">焼くだけ簡単・BBQにも最適</div>
+      <div class="point-item">カルビ・ロース・バラの3部位盛り合わせ</div>
+    </div>
+    <div class="who-for">
+      <strong>🎯 こんな人におすすめ</strong>
+      大人数での焼肉パーティーをしたい方・コスパ重視で選びたい方・子どもがいるご家庭で安心な食材をお探しの方
+    </div>
+  </div>
+
+  <!-- 商品5 おまけ -->
+  <div class="product" id="item5">
+    <span class="rank-badge rank-omake">おまけ</span>
+    <h2>淡路島フルーツ玉ねぎと神戸牛ビーフカレー3袋セット</h2>
+    <div class="affiliate-link">
+      <table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/533438ab.4084eb5b.533438ac.718351e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fawajitamanegi%2F10000583-copy1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/533438ab.4084eb5b.533438ac.718351e3/?me_id=1229230&item_id=10000727&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fawajitamanegi%2Fcabinet%2F09434716%2Fkobecrpc-3_thm.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="" title=""></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/533438ab.4084eb5b.533438ac.718351e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fawajitamanegi%2F10000583-copy1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">淡路島フルーツ玉ねぎと神戸ビーフ使用 神戸牛ビーフカレー3袋セット レトルト 送料無料</a></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/533438ab.4084eb5b.533438ac.718351e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fawajitamanegi%2F10000583-copy1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/533438ab.4084eb5b.533438ac.718351e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fawajitamanegi%2F10000583-copy1%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+    <div class="product-desc">
+      <p>「神戸牛を食べたいけど焼肉はちょっと大変」という方にぴったりなのがこのレトルトカレーです。淡路島産のフルーツ玉ねぎと本物の神戸牛を使用しており、温めてかけるだけで本格的な神戸牛カレーが自宅で楽しめます。</p>
+      <p>3袋セットなのでストックにも便利。忙しい日の夕食・ランチ・夜食にさっと使えます。保存食としても優秀で、いざというときの非常食としても活躍します。</p>
+      <p>価格帯も手頃なため、神戸牛を初めて試してみたい方の入門としてもおすすめです。ちょっとした手土産や差し入れとしても喜ばれます。</p>
+    </div>
+    <div class="points">
+      <div class="points-title">おすすめポイント</div>
+      <div class="point-item">温めるだけで本格神戸牛カレーが楽しめる</div>
+      <div class="point-item">淡路島フルーツ玉ねぎ使用で旨みが深い</div>
+      <div class="point-item">3袋セットでストックにも便利</div>
+      <div class="point-item">送料無料でお手頃価格</div>
+    </div>
+    <div class="who-for">
+      <strong>🎯 こんな人におすすめ</strong>
+      手軽に神戸牛を楽しみたい方・忙しくて料理の時間がない方・ちょっとした手土産をお探しの方
+    </div>
+  </div>
+
+  <!-- まとめ -->
+  <div class="summary-box" id="summary">
+    <h2>📝 まとめ：どれを選べばいい？</h2>
+    <div class="summary-row">
+      <span class="summary-rank">第1位</span>
+      <span class="summary-text">A5桐箱セット → 最高級ギフト・特別な記念日に</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-rank">第2位</span>
+      <span class="summary-text">神戸牛6点食べ比べ → 迷ったらこれ・定番の人気商品</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-rank">第3位</span>
+      <span class="summary-text">ヒライの食べ比べ → 本格派・希少部位を楽しみたい方に</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-rank">第4位</span>
+      <span class="summary-text">国産牛1kgセット → 大人数・コスパ重視のパーティーに</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-rank">おまけ</span>
+      <span class="summary-text">神戸牛カレー → 手軽に神戸牛を味わいたい方・手土産に</span>
+    </div>
+  </div>
+
 </div>
 
 <footer>
   <p>※本記事にはアフィリエイトリンクが含まれています。</p>
+  <p>※価格・在庫状況は楽天市場の販売ページでご確認ください。</p>
 </footer>
 
 </body>
